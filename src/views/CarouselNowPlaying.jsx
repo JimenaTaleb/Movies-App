@@ -38,7 +38,7 @@ export default function CarouselNowPlaying() {
             <Card>
               <CardMedia
                 component="img"
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                 alt={movie.title}
                 sx={{ width: "100%", height: "300px" }}
               />
