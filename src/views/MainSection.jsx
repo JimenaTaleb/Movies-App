@@ -1,5 +1,13 @@
+import CarouselNowPlaying from "./CarouselNowPlaying"
+import CarouselPopular from "./CarouselPopular"
+import CarouselTopRated from "./CarouselTopRated"
+
 export default function MainSection() {
   return (
-    <main>MainSection</main>
+    <main>
+        <CarouselNowPlaying/>
+        <CarouselPopular/>
+        <CarouselTopRated/>
+    </main>
   )
 }
