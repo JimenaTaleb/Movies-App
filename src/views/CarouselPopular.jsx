@@ -1,5 +1,5 @@
 export default function CarouselPopular() {
   return (
-    <div>CarouselPopular</div>
+    <section>CarouselPopular</section>
   )
 }

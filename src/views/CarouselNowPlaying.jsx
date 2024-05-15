@@ -1,5 +1,5 @@
 export default function CarouselNowPlaying() {
   return (
-    <div>CarouselNowPlaying</div>
+    <section>CarouselNowPlaying</section>
   )
 }
