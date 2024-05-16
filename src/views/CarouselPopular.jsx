@@ -10,7 +10,7 @@ export default function CarouselPopular(){
       `https://api.themoviedb.org/3/movie/popular?api_key=5fbf63f58cb80df7053368c78b3f3399`
     )
       .then(({ data }) => {
-        setMovies(data.results);
+        setMovies(data.results.slice(0, 20));
       })
       .catch((error) => console.log(error));
   }, []);

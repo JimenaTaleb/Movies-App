@@ -17,7 +17,7 @@ export default App;
 /* 
 Estructura App
 Header
-MainSection (para que la estructura html quede header-main-footer) => CarouselNowPlaying (1) CarouselPopular CarouselTopRated (1 reutilizable) views
+MainSection (para que la estructura html quede header-main-footer) => CarouselNowPlaying (1) CarouselPopular CarouselTopRated (1 reutilizable) CarouselMyList? views
 Upcoming views
 Popular views
 Search views

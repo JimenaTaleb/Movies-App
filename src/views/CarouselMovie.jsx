@@ -10,6 +10,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { FaBedPulse } from "react-icons/fa6";
 
 export default function CarouselMovie({ movies, title }){
   const NextArrow = ({ onClick }) => {
@@ -48,7 +49,7 @@ export default function CarouselMovie({ movies, title }){
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
