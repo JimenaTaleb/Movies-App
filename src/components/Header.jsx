@@ -15,13 +15,10 @@ export default function Header() {
         <Link to="/popular">
           <Button>Populares</Button>
         </Link>
-        <Link>
+        <Link to="/my-list">
           <Button>Mi lista</Button>
         </Link>
-        <Link>
-          <Button>Mi lista</Button>
-        </Link>
-        <Link>
+        <Link to="/search">
           <Button>Buscar</Button>
         </Link>
       </ButtonGroup>
