@@ -1,14 +1,19 @@
 import Header from "./components/Header";
 import MainSection from "./views/MainSection";
 import Footer from "./components/Footer";
+import Upcoming from "./views/Upcoming"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <MainSection/>
+      <Routes>
+        <Route path="/" element={<MainSection />} />
+        <Route path="/upcoming" element={ <Upcoming/> } />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
