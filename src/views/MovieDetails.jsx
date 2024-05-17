@@ -15,23 +15,19 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=5fbf63f58cb80df7053368c78b3f3399`
-        );
-        setMovie(response.data);
-      } catch (error) {
-        console.error("Error fetching movie details: ", error);
-      }
-    };
-
-    fetchMovieDetails();
+    axios(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=5fbf63f58cb80df7053368c78b3f3399`
+    )
+      .then(({ data }) => {
+        setMovie(data);
+      })
+      .catch((error) => console.error("Error fetching movie details: ", error));
   }, [id]);
-
+  
   if (!movie) {
     return <Typography variant="h5">Movie not found</Typography>;
   }
+  
 
   return (
     <Container>
