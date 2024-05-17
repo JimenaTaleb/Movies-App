@@ -1,9 +1,10 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Box, Typography, Card, CardMedia, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardMedia, CardContent, Button } from "@mui/material";
 
 export default function CarouselNowPlaying() {
   const [movies, setMovies] = useState([]);
@@ -55,6 +56,11 @@ export default function CarouselNowPlaying() {
               >
                 <Typography variant="h5">{movie.title}</Typography>
                 <Typography variant="body2">{movie.overview}</Typography>
+                <Link to={`/movie/${movie.id}`} style={{ textDecoration: "none", marginTop: "10px" }}>
+                  <Button variant="contained" color="primary">
+                    Ver más
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </Box>
@@ -63,3 +69,4 @@ export default function CarouselNowPlaying() {
     </section>
   );
 }
+

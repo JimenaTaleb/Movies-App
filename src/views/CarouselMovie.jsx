@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,9 +12,8 @@ import {
   IconButton,
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { FaBedPulse } from "react-icons/fa6";
 
-export default function CarouselMovie({ movies, title }){
+export default function CarouselMovie({ movies, title }) {
   const NextArrow = ({ onClick }) => {
     return (
       <IconButton
@@ -62,34 +63,37 @@ export default function CarouselMovie({ movies, title }){
       <Typography variant="h2">{title}</Typography>
       <Slider {...settings}>
         {movies.map((movie) => (
-          <Box key={movie.id} position="relative" padding="10px" sx={{ marginRight: "20px" }}>
-            <Card>
-              <CardMedia
-                component="img"
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                sx={{ width: "100%", height: "auto" }}
-              />
-              <CardContent
-                sx={{
-                  position: "absolute",
-                  bottom: 10,
-                  left: 10,
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  color: "white",
-                  padding: "10px",
-                  maxWidth: "80%",
-                }}
-              >
-                <Typography variant="h5">{movie.title}</Typography>
-              </CardContent>
-            </Card>
-          </Box>
+          <Link to={`/movie/${movie.id}`} key={movie.id} style={{ textDecoration: "none" }}>
+            <Box position="relative" padding="10px" sx={{ marginRight: "20px" }}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  sx={{ width: "100%", height: "auto" }}
+                />
+                <CardContent
+                  sx={{
+                    position: "absolute",
+                    bottom: 10,
+                    left: 10,
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    color: "white",
+                    padding: "10px",
+                    maxWidth: "80%",
+                  }}
+                >
+                  <Typography variant="h5">{movie.title}</Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          </Link>
         ))}
       </Slider>
     </section>
   );
-};
+}
+
 
 
 

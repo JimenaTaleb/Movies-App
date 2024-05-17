@@ -5,6 +5,7 @@ import RecentReleases from "./views/RecentReleases"
 import Popular from "./views/Popular"
 import MyList from "./views/MyList";
 import Search from "./views/Search";
+import MovieDetails from "./views/MovieDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/popular" element={ <Popular/> } />
         <Route path="/my-list" element={ <MyList/> } />
         <Route path="/search" element={ <Search/> } />
+        <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>
       <Footer />
     </BrowserRouter>

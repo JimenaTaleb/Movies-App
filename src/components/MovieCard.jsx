@@ -1,9 +1,9 @@
-import {Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function Moviecard({ title, overview, posterPath, id }) {
+export default function MovieCard({ title, overview, posterPath, id }) {
   return (
-    <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
+    <Link to={`/movie/${id}`} style={{ textDecoration: "none" }}>
       <Card
         sx={{
           maxWidth: 345,
@@ -37,3 +37,4 @@ export default function Moviecard({ title, overview, posterPath, id }) {
     </Link>
   );
 }
+
