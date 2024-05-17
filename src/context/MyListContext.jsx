@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 export const MyListContext = createContext();
 
 export const MyListProvider = ({ children }) => {
-  const [myList, setMyList] = useState([]);
+  const [myList, setMyList] = useState(null);
 
   useEffect(() => {
     const myListLS = JSON.parse(localStorage.getItem('myList'));
