@@ -8,6 +8,7 @@ import MyList from './views/MyList';
 import Search from './views/Search';
 import MovieDetails from './views/MovieDetails';
 import MovieTrailer from './views/MovieTrailer';
+import NotFound from './components/NotFound';
 import { MyListProvider } from './context/MyListContext';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/trailer/:id" element={<MovieTrailer />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
@@ -44,7 +46,6 @@ MovieDetail views
 MovieTrailer views
 NotFound components
 Footer components
-
 MovieCard components
 
 */
