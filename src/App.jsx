@@ -6,6 +6,7 @@ import Popular from "./views/Popular"
 import MyList from "./views/MyList";
 import Search from "./views/Search";
 import MovieDetails from "./views/MovieDetails";
+import MovieTrailer from "./views/MovieTrailer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/my-list" element={ <MyList/> } />
         <Route path="/search" element={ <Search/> } />
         <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/trailer/:id" element={<MovieTrailer />} />
       </Routes>
       <Footer />
     </BrowserRouter>

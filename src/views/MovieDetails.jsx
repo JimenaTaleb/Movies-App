@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import {
-  Box,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  Container,
-} from "@mui/material";
+import { Box, Typography, Card, CardMedia, CardContent, Container, Button } from "@mui/material";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -18,16 +11,13 @@ export default function MovieDetails() {
     axios(
       `https://api.themoviedb.org/3/movie/${id}?api_key=5fbf63f58cb80df7053368c78b3f3399`
     )
-      .then(({ data }) => {
-        setMovie(data);
-      })
+      .then(({ data }) => setMovie(data))
       .catch((error) => console.error("Error fetching movie details: ", error));
   }, [id]);
-  
+
   if (!movie) {
     return <Typography variant="h5">Movie not found</Typography>;
   }
-  
 
   return (
     <Container>
@@ -53,9 +43,19 @@ export default function MovieDetails() {
               Genres: {movie.genres.map((genre) => genre.name).join(", ")}
             </Typography>
           </CardContent>
+          <Button
+            component={Link}
+            to={`/trailer/${id}`}
+            variant="contained"
+            color="primary"
+            sx={{ marginTop: "auto" }}
+          >
+            Ver Tráiler
+          </Button>
         </Box>
       </Card>
     </Container>
   );
 }
+
 
