@@ -3,7 +3,7 @@ import MovieCard from "../components/MovieCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ContainCard() {
+export default function Popular() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);

@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import MainSection from "./views/MainSection";
 import Footer from "./components/Footer";
-import Upcoming from "./views/Upcoming"
+import RecentReleases from "./views/RecentReleases"
 import Popular from "./views/Popular"
 import MyList from "./views/MyList";
 import Search from "./views/Search";
@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainSection />} />
-        <Route path="/upcoming" element={ <Upcoming/> } />
+        <Route path="/recent-releases" element={ <RecentReleases/> } />
         <Route path="/popular" element={ <Popular/> } />
         <Route path="/my-list" element={ <MyList/> } />
         <Route path="/search" element={ <Search/> } />

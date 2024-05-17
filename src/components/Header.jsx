@@ -9,8 +9,8 @@ export default function Header() {
         <Link to="/">
           <Button>Home</Button>
         </Link>
-        <Link to="/upcoming">
-          <Button>Últimos lanzamientos</Button>
+        <Link to="/recent-releases">
+          <Button>Lanzamientos recientes</Button>
         </Link>
         <Link to="/popular">
           <Button>Populares</Button>

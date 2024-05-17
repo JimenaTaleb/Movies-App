@@ -3,7 +3,7 @@ import MovieCard from "../components/MovieCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ContainCard() {
+export default function RecentReleases() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -14,7 +14,7 @@ export default function ContainCard() {
 
   useEffect(() => {
     axios(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=5fbf63f58cb80df7053368c78b3f3399&page=${page}`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=5fbf63f58cb80df7053368c78b3f3399&page=${page}`
     )
       .then(({ data }) => {
         console.log(data);
@@ -26,7 +26,7 @@ export default function ContainCard() {
 
   return (
     <section>
-      <Typography variant="h2">Últimos lanzamientos</Typography>
+      <Typography variant="h2">Lanzamientos recientes</Typography>
 
       <Box
         sx={{

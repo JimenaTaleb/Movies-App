@@ -58,7 +58,6 @@ export default function Search() {
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
-                overview={movie.overview}
                 posterPath={movie.poster_path}
               />
             ))}
