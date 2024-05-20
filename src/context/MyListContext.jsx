@@ -2,12 +2,12 @@ import { createContext, useEffect, useState } from 'react';
 
 export const MyListContext = createContext();
 
-export const MyListProvider = ({ children }) => {
+export default function MyListContextProvider({ children }) {
   const [myList, setMyList] = useState(null);
 
   useEffect(() => {
     const myListLS = JSON.parse(localStorage.getItem('myList'));
-    if (myListLS) {
+    if (myListLS !== null) {
       setMyList(myListLS);
     }
   }, []);
@@ -28,16 +28,11 @@ export const MyListProvider = ({ children }) => {
     return myList.some((movie) => movie.id === movieId);
   };
 
-  const totalMyList = () => {
-    return myList.length;
-  };
-
   const data = {
     myList,
     addToMyList,
     removeFromMyList,
-    isInMyList,
-    totalMyList,
+    isInMyList
   };
 
   return (
@@ -45,5 +40,5 @@ export const MyListProvider = ({ children }) => {
       {children}
     </MyListContext.Provider>
   );
-};
+}
 

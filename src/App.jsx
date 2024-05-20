@@ -9,11 +9,11 @@ import Search from './views/Search';
 import MovieDetails from './views/MovieDetails';
 import MovieTrailer from './views/MovieTrailer';
 import NotFound from './components/NotFound';
-import { MyListProvider } from './context/MyListContext';
+import MyListContextProvider from './context/MyListContext';
 
 function App() {
   return (
-    <MyListProvider>
+    <MyListContextProvider>
       <BrowserRouter>
         <Header />
         <Routes>
@@ -28,7 +28,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </MyListProvider>
+    </MyListContextProvider>
   );
 }
 
