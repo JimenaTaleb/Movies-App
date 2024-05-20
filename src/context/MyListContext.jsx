@@ -3,17 +3,15 @@ import { createContext, useEffect, useState } from 'react';
 export const MyListContext = createContext();
 
 export default function MyListContextProvider({ children }) {
-  const [myList, setMyList] = useState(null);
+  const [myList, setMyList] = useState(() => {
+    const savedList = localStorage.getItem('myList');
+    return savedList ? JSON.parse(savedList) : [];
+  });
 
   useEffect(() => {
-    const myListLS = JSON.parse(localStorage.getItem('myList'));
-    if (myListLS !== null) {
-      setMyList(myListLS);
+    if (myList !== null) {
+      localStorage.setItem('myList', JSON.stringify(myList));
     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('myList', JSON.stringify(myList));
   }, [myList]);
 
   const addToMyList = (movie) => {
@@ -41,4 +39,5 @@ export default function MyListContextProvider({ children }) {
     </MyListContext.Provider>
   );
 }
+
 

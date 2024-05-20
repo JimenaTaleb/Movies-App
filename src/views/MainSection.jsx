@@ -1,6 +1,7 @@
 import CarouselNowPlaying from "./CarouselNowPlaying"
 import CarouselPopular from "./CarouselPopular"
 import CarouselTopRated from "./CarouselTopRated"
+import CarouselMyList from "./CarouselMyList"
 
 export default function MainSection() {
   return (
@@ -8,6 +9,7 @@ export default function MainSection() {
         <CarouselNowPlaying/>
         <CarouselPopular/>
         <CarouselTopRated/>
+        <CarouselMyList/>
     </main>
   )
 }
