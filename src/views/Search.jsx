@@ -1,32 +1,19 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Box, TextField, Typography, Pagination } from "@mui/material";
 import MovieCard from "../components/MovieCard";
+import useMovies from "../hooks/useMovies";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const { movies, totalPages, searchMovies, changePage, page } = useMovies();
 
   const handlePageChange = (event, value) => {
-    setPage(value);
+    changePage(value);
   };
 
   useEffect(() => {
     if (searchTerm.length > 0) {
-      axios(
-        `https://api.themoviedb.org/3/search/movie?api_key=5fbf63f58cb80df7053368c78b3f3399&query=${searchTerm}&page=${page}`
-      )
-        .then(({ data }) => {
-            console.log(data);
-          setResults(data.results);
-          setTotalPages(data.total_pages);
-        })
-        .catch((error) => console.log(error));
-    } else {
-      setResults([]);
-      setTotalPages(1);
+      searchMovies(searchTerm, page);
     }
   }, [searchTerm, page]);
 
@@ -38,12 +25,11 @@ export default function Search() {
         fullWidth
         onChange={(e) => {
           setSearchTerm(e.target.value);
-          setPage(1);
         }}
         value={searchTerm}
         sx={{ marginBottom: "20px" }}
       />
-      {results.length > 0 && (
+      {movies.length > 0 && (
         <Box>
           <Typography variant="h5">Resultados de Búsqueda</Typography>
           <Box
@@ -53,7 +39,7 @@ export default function Search() {
               flexWrap: "wrap",
             }}
           >
-            {results.map((movie) => (
+            {movies.map((movie) => (
               <MovieCard
                 key={movie.id}
                 id={movie.id}
@@ -75,4 +61,5 @@ export default function Search() {
     </Box>
   );
 }
+
 

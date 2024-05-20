@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import { Box, Typography } from "@mui/material";
+import useMovies from "../hooks/useMovies";
 
 export default function MovieTrailer() {
   const { id } = useParams();
-  const [trailerKey, setTrailerKey] = useState("");
+  const { trailerKey, getTrailer } = useMovies();
 
   useEffect(() => {
-    axios(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=5fbf63f58cb80df7053368c78b3f3399`
-    )
-      .then(({ data }) => {
-        const trailers = data.results.filter(
-          (video) => video.type === "Trailer" && video.site === "YouTube"
-        );
-        if (trailers.length > 0) {
-          setTrailerKey(trailers[0].key);
-        }
-      })
-      .catch((error) => console.error("Error fetching movie trailer: ", error));
-  }, [id]);
+    getTrailer(id);
+  }, [id, getTrailer]);
 
   if (!trailerKey) {
     return <Typography variant="h5">No trailer available</Typography>;
@@ -43,6 +32,3 @@ export default function MovieTrailer() {
     </Box>
   );
 }
-
-
-

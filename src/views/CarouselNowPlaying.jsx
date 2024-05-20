@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Typography, Card, CardMedia, CardContent, Button } from "@mui/material";
+import { Box, Card, CardMedia, CardContent, Button, Typography } from "@mui/material";
+import useMovies from "../hooks/useMovies";
 
 export default function CarouselNowPlaying() {
-  const [movies, setMovies] = useState([]);
+  const { movies, getMovies } = useMovies();
 
   useEffect(() => {
-    axios(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=5fbf63f58cb80df7053368c78b3f3399`
-    )
-      .then(({ data }) => {
-        console.log(data);
-        setMovies(data.results.slice(0, 15));
-      })
-      .catch((error) => console.log(error));
+    getMovies("now_playing", 1);
   }, []);
 
   const settings = {
@@ -69,4 +62,6 @@ export default function CarouselNowPlaying() {
     </section>
   );
 }
+
+
 

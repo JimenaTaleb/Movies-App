@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import CarouselMovie from "./CarouselMovie";
+import useMovies from "../hooks/useMovies";
 
 export default function CarouselPopular(){
-  const [movies, setMovies] = useState([]);
-
+  const { movies, getMovies } = useMovies();
+  
   useEffect(() => {
-    axios(
-      `https://api.themoviedb.org/3/movie/popular?api_key=5fbf63f58cb80df7053368c78b3f3399`
-    )
-      .then(({ data }) => {
-        setMovies(data.results.slice(0, 20));
-      })
-      .catch((error) => console.log(error));
+    getMovies("popular", 1);
   }, []);
-
+  
   return (
     <CarouselMovie
-      movies={movies}
+      movies={movies.slice(0, 20)}
       title="Películas Populares"
     />
   );
 };
+
+
 
 
 

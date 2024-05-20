@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import { Box, Typography, Card, CardMedia, CardContent, Container, Button } from "@mui/material";
+import { Box, Card, CardMedia, CardContent, Container, Button, Typography } from "@mui/material";
+import useMovies from "../hooks/useMovies";
 
 export default function MovieDetails() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const { movie, getMovieDetails } = useMovies();
 
   useEffect(() => {
-    axios(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=5fbf63f58cb80df7053368c78b3f3399`
-    )
-      .then(({ data }) => setMovie(data))
-      .catch((error) => console.error("Error fetching movie details: ", error));
-  }, [id]);
+    getMovieDetails(id);
+  }, [id, getMovieDetails]);
 
   if (!movie) {
     return <Typography variant="h5">Movie not found</Typography>;
@@ -57,5 +53,3 @@ export default function MovieDetails() {
     </Container>
   );
 }
-
-

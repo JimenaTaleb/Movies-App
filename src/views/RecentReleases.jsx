@@ -1,27 +1,17 @@
 import { Box, Pagination, Typography } from "@mui/material";
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useMovies from "../hooks/useMovies";
 
-export default function RecentReleases() {
-  const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+export default function Popular() {
+  const { movies, totalPages, getMovies, changePage, page } = useMovies();
 
   const handleChange = (event, value) => {
-    setPage(value);
+    changePage(value);
   };
 
   useEffect(() => {
-    axios(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=5fbf63f58cb80df7053368c78b3f3399&page=${page}`
-    )
-      .then(({ data }) => {
-        console.log(data);
-        setTotalPages(data.total_pages);
-        setMovies(data.results);
-      })
-      .catch((error) => console.log(error));
+    getMovies("now_playing", page); 
   }, [page]);
 
   return (
