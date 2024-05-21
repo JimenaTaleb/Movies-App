@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import useMovies from "../hooks/useMovies";
 
 export default function MovieTrailer() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { trailerKey, getTrailer } = useMovies();
 
@@ -17,9 +18,8 @@ export default function MovieTrailer() {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
-      <Link to={`/movie/${id}`} style={{ textDecoration: "none" }}>
-        <button>x</button>
-      </Link>
+
+      <button onClick={() => navigate(`/movie/${id}`)}>x</button>
       <iframe
         width="800"
         height="450"
