@@ -7,38 +7,39 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header style={{ backgroundColor: "#001529", padding: "10px 20px" }}>
+    <header style={{ backgroundColor: '#001529', padding: '10px 20px' }}>
       <Stack
-        direction={{ xs: "column", md: "row" }}
+        direction={{ xs: 'column', md: 'row' }}
         alignItems="center"
         justifyContent="space-between"
-        sx={{
-          textAlign: { xs: "center", md: "left" },
+        sx={{ 
+          textAlign: { xs: 'center', md: 'left' },
         }}
       >
         <Typography
           sx={{
             fontSize: { xs: 30, md: 40, lg: 50 },
-            color: "#fff",
-            fontWeight: "bold",
-            mb: { xs: 2, md: 0 },
+            color: '#fff',
+            fontWeight: 'bold',
+            mb: { xs: 2, md: 0 }
           }}
         >
           Movies App
         </Typography>
         <ButtonGroup
-          variant="contained"
+          variant="outlined"
           aria-label="Basic button group"
-          sx={{
-            flexDirection: { xs: "column", sm: "row" },
-            "& .MuiButton-root": {
-              color: "#001529",
-              backgroundColor: "#fff",
-              margin: { xs: "5px 0", sm: "0 5px" },
-              fontSize: { xs: "12px", sm: "14px" },
-              padding: { xs: "5px 10px", sm: "6px 16px" },
-              "&:hover": {
-                backgroundColor: "#f1f1f1",
+          sx={{ 
+            flexDirection: { xs: 'row', sm: 'row' },
+            '& .MuiButton-root': {
+              color: '#fff',
+              borderColor: '#fff',
+              margin: { xs: '2px 0', sm: '0 5px' },
+              fontSize: { xs: '8px', sm: '14px' },
+              padding: { xs: '5px 10px', sm: '6px 16px' },
+              '&:hover': {
+                borderColor: '#f1f1f1',
+                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
               },
             },
           }}
