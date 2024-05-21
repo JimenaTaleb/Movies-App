@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,6 +7,8 @@ import { Box, Card, CardMedia, CardContent, Button, Typography } from "@mui/mate
 import useMovies from "../hooks/useMovies";
 
 export default function CarouselNowPlaying() {
+  const navigate = useNavigate();
+
   const { movies, getMovies } = useMovies();
 
   useEffect(() => {
@@ -49,11 +51,10 @@ export default function CarouselNowPlaying() {
               >
                 <Typography variant="h5">{movie.title}</Typography>
                 <Typography variant="body2">{movie.overview}</Typography>
-                <Link to={`/movie/${movie.id}`} style={{ textDecoration: "none", marginTop: "10px" }}>
-                  <Button variant="contained" color="primary">
+
+              <Button variant="contained" color="primary" onClick={() => navigate(`/movie/${movie.id}`)}>
                     Ver más
                   </Button>
-                </Link>
               </CardContent>
             </Card>
           </Box>
