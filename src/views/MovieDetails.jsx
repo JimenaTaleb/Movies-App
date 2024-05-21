@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Box, Card, CardMedia, CardContent, Container, Button, Typography } from "@mui/material";
 import useMovies from "../hooks/useMovies";
 
 export default function MovieDetails() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { movie, getMovieDetails } = useMovies();
 
@@ -40,8 +41,7 @@ export default function MovieDetails() {
             </Typography>
           </CardContent>
           <Button
-            component={Link}
-            to={`/trailer/${id}`}
+            onClick={() => navigate(`/trailer/${id}`)}
             variant="contained"
             color="primary"
             sx={{ marginTop: "auto" }}
