@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -16,6 +16,8 @@ import { ArrowBackIos, ArrowForwardIos, Favorite, FavoriteBorder } from '@mui/ic
 import { MyListContext } from '../context/MyListContext';
 
 export default function CarouselMovie({ movies, title }) {
+  const navigate = useNavigate();
+
   const { addToMyList, removeFromMyList, isInMyList } = useContext(MyListContext);
 
   const NextArrow = ({ onClick }) => {
@@ -68,13 +70,13 @@ export default function CarouselMovie({ movies, title }) {
       <Slider {...settings}>
         {movies.map((movie) => (
           <Box position="relative" padding="10px" sx={{ marginRight: '20px' }} key={movie.id}>
-            <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
               <Card>
                 <CardMedia
                   component="img"
                   image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                   sx={{ width: '100%', height: 'auto' }}
+                  onClick={() => navigate(`/movie/${movie.id}`)}
                 />
                 <CardContent
                   sx={{
@@ -90,7 +92,6 @@ export default function CarouselMovie({ movies, title }) {
                   <Typography variant="h5">{movie.title}</Typography>
                 </CardContent>
               </Card>
-            </Link>
             <Tooltip title={isInMyList(movie.id) ? 'Remove from My List' : 'Add to My List'}>
               <IconButton
                 onClick={() => (isInMyList(movie.id) ? removeFromMyList(movie.id) : addToMyList(movie))}
