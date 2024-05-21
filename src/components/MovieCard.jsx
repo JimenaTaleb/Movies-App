@@ -1,10 +1,13 @@
 import { useContext } from 'react';
 import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MyListContext } from '../context/MyListContext';
 
 export default function MovieCard({ title, overview, posterPath, id }) {
+
+  const navigate = useNavigate();
+  
   const { myList, addToMyList, removeFromMyList } = useContext(MyListContext);
 
   const isMovieInList = myList.some((movie) => movie.id === id);
@@ -27,7 +30,6 @@ export default function MovieCard({ title, overview, posterPath, id }) {
         position: 'relative'
       }}
     >
-      <Link to={`/movie/${id}`} style={{ textDecoration: 'none' }}>
         <CardMedia
           component="img"
           height="300"
@@ -35,6 +37,7 @@ export default function MovieCard({ title, overview, posterPath, id }) {
           image={`https://image.tmdb.org/t/p/w500${posterPath}`}
           alt={title}
           title={title}
+          onClick={() => navigate(`/movie/${id}`)}
         />
         <CardContent>
           <Typography
@@ -49,7 +52,6 @@ export default function MovieCard({ title, overview, posterPath, id }) {
             {title}
           </Typography>
         </CardContent>
-      </Link>
       <IconButton
         onClick={handleToggleMyList}
         sx={{ position: 'absolute', top: 10, right: 10 }}
