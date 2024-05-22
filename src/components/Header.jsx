@@ -27,9 +27,11 @@ export default function Header() {
         >
           <Typography
             sx={{
+              fontFamily: "Sarabun",
               fontSize: { xs: 30, md: 40, lg: 50 },
               color: "#fff",
               fontWeight: "bold",
+              textShadow: "2px 2px 2px #9cdbd4",
             }}
           >
             Movies App
@@ -43,7 +45,7 @@ export default function Header() {
               fontSize: { xs: 30, md: 40, lg: 50 },
             }}
           >
-            <FcFilmReel/>
+            <FcFilmReel />
           </Box>
         </Stack>
         <ButtonGroup
@@ -53,13 +55,13 @@ export default function Header() {
             flexDirection: "row",
             "& .MuiButton-root": {
               color: "#fff",
-              borderColor: "#fff",
+              borderColor: "#9cdbd4",
               margin: { xs: "2px 0", sm: "0 5px" },
               fontSize: { xs: "8px", sm: "14px" },
               padding: { xs: "5px 10px", sm: "6px 16px" },
               "&:hover": {
                 borderColor: "#f1f1f1",
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                boxShadow: "0px 4px 8px #9cdbd4",
               },
             },
           }}

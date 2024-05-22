@@ -38,7 +38,7 @@ export default function CarouselMovie({ movies, title }) {
           zIndex: 2,
         }}
       >
-        <ArrowForwardIos style={{ color: "white" }} />
+        <ArrowForwardIos style={{ color: "#231841" }} />
       </IconButton>
     );
   };
@@ -75,10 +75,13 @@ export default function CarouselMovie({ movies, title }) {
       <Typography
         variant="h2"
         sx={{
+          fontFamily: "Sarabun",
           fontSize: { xs: 15, md: 25, lg: 35 },
-          color: "#001529",
+          color: "#231841",
           fontWeight: "bold",
           marginBottom: "20px",
+          marginLeft: "20px",
+          textShadow: "2px 2px 2px #9cdbd4",
         }}
       >
         {title}
@@ -115,6 +118,7 @@ export default function CarouselMovie({ movies, title }) {
                 <Typography
                   variant="h5"
                   sx={{
+                    fontFamily: "Sarabun",
                     flex: 1,
                     whiteSpace: "nowrap",
                     overflow: "hidden",
@@ -122,7 +126,7 @@ export default function CarouselMovie({ movies, title }) {
                     color: "white",
                     textAlign: "center",
                     display: { xs: "none", sm: "block" },
-                    fontSize: "15px",
+                    fontSize: "17px",
                   }}
                 >
                   {movie.title}
@@ -141,7 +145,7 @@ export default function CarouselMovie({ movies, title }) {
                         : addToMyList(movie)
                     }
                     sx={{
-                      color: isInMyList(movie.id) ? "red" : "white",
+                      color: isInMyList(movie.id) ? "#9cdbd4" : "white",
                     }}
                   >
                     {isInMyList(movie.id) ? <Favorite /> : <FavoriteBorder />}

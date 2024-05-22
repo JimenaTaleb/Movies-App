@@ -36,7 +36,6 @@ export default function CarouselNowPlaying() {
 
   const marginBottom = isLargeScreen ? 0 : 3;
 
-
   useEffect(() => {
     getMovies("now_playing", 1);
   }, []);
@@ -50,7 +49,7 @@ export default function CarouselNowPlaying() {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    arrows: false
+    arrows: false,
   };
 
   return (
@@ -82,6 +81,7 @@ export default function CarouselNowPlaying() {
                   padding: "5px",
                   width: "50%",
                   textAlign: "center",
+                  borderRadius: 0,
                 }}
               >
                 <Typography variant="h5">{movie.title}</Typography>
@@ -92,15 +92,14 @@ export default function CarouselNowPlaying() {
                   onClick={() => navigate(`/movie/${movie.id}`)}
                   sx={{
                     color: "#fff",
-                    backgroundColor: "#001529",
-                    borderColor: "#fff",
+                    backgroundColor: "#231841",
+                    border: "1px solid #9cdbd4",
                     margin: { xs: "2px 0", sm: "0 5px" },
                     fontSize: { xs: "8px", sm: "14px" },
                     padding: { xs: "5px 10px", sm: "6px 16px" },
                     "&:hover": {
-                      borderColor: "#f1f1f1",
-                      boxShadow: "0px 4px 8px #fff",
-                      backgroundColor: "#001529",
+                      boxShadow: "0px 4px 8px #9cdbd4",
+                      backgroundColor: "#231841",
                     },
                     mt: 1,
                   }}
