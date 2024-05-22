@@ -1,15 +1,37 @@
-import React, { useEffect } from "react";
+//Importo useEffect
+import { useEffect } from "react";
+
+//Importo useNavigate
 import { useNavigate } from "react-router-dom";
+
+//Importo Slider
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Card, CardMedia, CardContent, Button, Typography } from "@mui/material";
+
+//Importo de MUI
+import {
+  useTheme,
+  useMediaQuery,
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Button,
+  Typography,
+} from "@mui/material";
+
+//Importo customHook
 import useMovies from "../hooks/useMovies";
 
 export default function CarouselNowPlaying() {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   const { movies, getMovies } = useMovies();
+
+  const marginBottom = isLargeScreen ? 0 : 3;
 
   useEffect(() => {
     getMovies("now_playing", 1);
@@ -27,34 +49,59 @@ export default function CarouselNowPlaying() {
   };
 
   return (
-    <section>
+    <section style={{ marginTop: "0", paddingTop: "0" }}>
       <Slider {...settings}>
         {movies.map((movie) => (
-          <Box key={movie.id} position="relative" padding="10px">
+          <Box key={movie.id} position="relative" marginBottom={marginBottom}>
             <Card>
               <CardMedia
-                component="img"
-                image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                component="div"
+                image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={movie.title}
-                sx={{ width: "100%", height: "300px" }}
+                sx={{
+                  width: "100%",
+                  height: "550px",
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "top",
+                }}
               />
               <CardContent
                 sx={{
                   position: "absolute",
-                  bottom: 10,
-                  left: 10,
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  bottom: 20,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  backgroundColor: "#69666666",
                   color: "white",
-                  padding: "10px",
-                  maxWidth: "80%",
+                  padding: "5px",
+                  width: "50%",
+                  textAlign: "center",
                 }}
               >
                 <Typography variant="h5">{movie.title}</Typography>
-                <Typography variant="body2">{movie.overview}</Typography>
-
-              <Button variant="contained" color="primary" onClick={() => navigate(`/movie/${movie.id}`)}>
-                    Ver más
-                  </Button>
+                {isLargeScreen && (
+                  <Typography variant="body2">{movie.overview}</Typography>
+                )}
+                <Button
+                  onClick={() => navigate(`/movie/${movie.id}`)}
+                  sx={{
+                    color: "#fff",
+                    backgroundColor: "#001529",
+                    borderColor: "#fff",
+                    margin: { xs: "2px 0", sm: "0 5px" },
+                    fontSize: { xs: "8px", sm: "14px" },
+                    padding: { xs: "5px 10px", sm: "6px 16px" },
+                    "&:hover": {
+                      borderColor: "#fff",
+                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                      backgroundColor: "#001529",
+                    },
+                    mt: 1,
+                  }}
+                >
+                  Ver mas
+                </Button>
               </CardContent>
             </Card>
           </Box>
@@ -63,6 +110,3 @@ export default function CarouselNowPlaying() {
     </section>
   );
 }
-
-
-
