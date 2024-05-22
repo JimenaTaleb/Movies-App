@@ -98,7 +98,7 @@ export default function CarouselNowPlaying() {
                     padding: { xs: "5px 10px", sm: "6px 16px" },
                     "&:hover": {
                       borderColor: "#f1f1f1",
-                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                      boxShadow: "0px 4px 8px #fff",
                       backgroundColor: "#001529",
                     },
                     mt: 1,

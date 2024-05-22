@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   Box,
   Typography,
@@ -11,28 +11,34 @@ import {
   CardContent,
   IconButton,
   Tooltip,
-} from '@mui/material';
-import { ArrowBackIos, ArrowForwardIos, Favorite, FavoriteBorder } from '@mui/icons-material';
-import { MyListContext } from '../context/MyListContext';
+} from "@mui/material";
+import {
+  ArrowBackIos,
+  ArrowForwardIos,
+  Favorite,
+  FavoriteBorder,
+} from "@mui/icons-material";
+import { MyListContext } from "../context/MyListContext";
 
 export default function CarouselMovie({ movies, title }) {
   const navigate = useNavigate();
 
-  const { addToMyList, removeFromMyList, isInMyList } = useContext(MyListContext);
+  const { addToMyList, removeFromMyList, isInMyList } =
+    useContext(MyListContext);
 
   const NextArrow = ({ onClick }) => {
     return (
       <IconButton
         onClick={onClick}
         style={{
-          position: 'absolute',
-          top: '50%',
+          position: "absolute",
+          top: "50%",
           right: 0,
-          transform: 'translate(0, -50%)',
+          transform: "translate(0, -50%)",
           zIndex: 2,
         }}
       >
-        <ArrowForwardIos style={{ color: 'white' }} />
+        <ArrowForwardIos style={{ color: "white" }} />
       </IconButton>
     );
   };
@@ -42,14 +48,14 @@ export default function CarouselMovie({ movies, title }) {
       <IconButton
         onClick={onClick}
         style={{
-          position: 'absolute',
-          top: '50%',
+          position: "absolute",
+          top: "50%",
           left: 0,
-          transform: 'translate(0, -50%)',
+          transform: "translate(0, -50%)",
           zIndex: 2,
         }}
       >
-        <ArrowBackIos style={{ color: 'white' }} />
+        <ArrowBackIos style={{ color: "white" }} />
       </IconButton>
     );
   };
@@ -58,48 +64,91 @@ export default function CarouselMovie({ movies, title }) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
 
   return (
-    <section>
-      <Typography variant="h2">{title}</Typography>
+    <section style={{ marginTop: "30px" }}>
+      <Typography
+        variant="h2"
+        sx={{
+          fontSize: { xs: 15, md: 25, lg: 35 },
+          color: "#001529",
+          fontWeight: "bold",
+          marginBottom: "20px",
+        }}
+      >
+        {title}
+      </Typography>
+
       <Slider {...settings}>
         {movies.map((movie) => (
-          <Box position="relative" padding="10px" sx={{ marginRight: '20px' }} key={movie.id}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  sx={{ width: '100%', height: 'auto' }}
-                  onClick={() => navigate(`/movie/${movie.id}`)}
-                />
-                <CardContent
+          <Box position="relative" key={movie.id}>
+            <Card
+              sx={{
+                width: "83%",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                },
+              }}
+            >
+              <CardMedia
+                component="img"
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                sx={{ width: "100%", height: "300px", cursor: "pointer" }}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+              />
+
+              <CardContent
+                sx={{
+                  backgroundColor: "#001529",
+                  color: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  variant="h5"
                   sx={{
-                    position: 'absolute',
-                    bottom: 10,
-                    left: 10,
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    color: 'white',
-                    padding: '10px',
-                    maxWidth: '80%',
+                    flex: 1,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    color: "white",
+                    textAlign: "center",
+                    display: { xs: "none", sm: "block" },
+                    fontSize: "15px",
                   }}
                 >
-                  <Typography variant="h5">{movie.title}</Typography>
-                </CardContent>
-              </Card>
-            <Tooltip title={isInMyList(movie.id) ? 'Remove from My List' : 'Add to My List'}>
-              <IconButton
-                onClick={() => (isInMyList(movie.id) ? removeFromMyList(movie.id) : addToMyList(movie))}
-                style={{ position: 'absolute', top: 10, right: 10 }}
-              >
-                {isInMyList(movie.id) ? <Favorite style={{ color: 'red' }} /> : <FavoriteBorder style={{ color: 'white' }} />}
-              </IconButton>
-            </Tooltip>
+                  {movie.title}
+                </Typography>
+                <Tooltip
+                  title={
+                    isInMyList(movie.id)
+                      ? "Quitar de Mi Lista"
+                      : "Agregar a Mi Lista"
+                  }
+                >
+                  <IconButton
+                    onClick={() =>
+                      isInMyList(movie.id)
+                        ? removeFromMyList(movie.id)
+                        : addToMyList(movie)
+                    }
+                    sx={{
+                      color: isInMyList(movie.id) ? "red" : "white",
+                    }}
+                  >
+                    {isInMyList(movie.id) ? <Favorite /> : <FavoriteBorder />}
+                  </IconButton>
+                </Tooltip>
+              </CardContent>
+            </Card>
           </Box>
         ))}
       </Slider>
