@@ -26,12 +26,16 @@ import useMovies from "../hooks/useMovies";
 
 export default function CarouselNowPlaying() {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   const { movies, getMovies } = useMovies();
 
+  //Importo el hook useTheme para acceder a las mq y hacer responsive el diseño
+  const theme = useTheme();
+
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
   const marginBottom = isLargeScreen ? 0 : 3;
+
 
   useEffect(() => {
     getMovies("now_playing", 1);
@@ -93,7 +97,7 @@ export default function CarouselNowPlaying() {
                     fontSize: { xs: "8px", sm: "14px" },
                     padding: { xs: "5px 10px", sm: "6px 16px" },
                     "&:hover": {
-                      borderColor: "#fff",
+                      borderColor: "#f1f1f1",
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
                       backgroundColor: "#001529",
                     },
