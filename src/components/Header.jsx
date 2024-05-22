@@ -10,7 +10,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header style={{ backgroundColor: "#001529", padding: "10px 20px" }}>
+    <header style={{ backgroundColor: "#231841", padding: "10px 20px" }}>
       <Stack
         direction={{ xs: "column", md: "row" }}
         alignItems="center"

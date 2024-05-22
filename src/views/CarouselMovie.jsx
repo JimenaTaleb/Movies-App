@@ -106,7 +106,7 @@ export default function CarouselMovie({ movies, title }) {
 
               <CardContent
                 sx={{
-                  backgroundColor: "#001529",
+                  backgroundColor: "#231841",
                   color: "white",
                   display: "flex",
                   flexDirection: "column",
