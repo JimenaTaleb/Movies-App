@@ -50,6 +50,7 @@ export default function CarouselNowPlaying() {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    arrows: false
   };
 
   return (
@@ -57,7 +58,7 @@ export default function CarouselNowPlaying() {
       <Slider {...settings}>
         {movies.map((movie) => (
           <Box key={movie.id} position="relative" marginBottom={marginBottom}>
-            <Card>
+            <Card sx={{ borderRadius: 0 }}>
               <CardMedia
                 component="div"
                 image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
