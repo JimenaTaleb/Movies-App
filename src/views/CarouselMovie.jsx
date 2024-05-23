@@ -55,7 +55,7 @@ export default function CarouselMovie({ movies, title }) {
           zIndex: 2,
         }}
       >
-        <ArrowBackIos style={{ color: "white" }} />
+        <ArrowBackIos style={{ color: "#fff" }} />
       </IconButton>
     );
   };
@@ -71,7 +71,7 @@ export default function CarouselMovie({ movies, title }) {
   };
 
   return (
-    <section style={{ marginTop: "30px" }}>
+    <section style={{ marginTop: "30px", marginBottom: "30px" }}>
       <Typography
         variant="h2"
         sx={{
@@ -92,7 +92,7 @@ export default function CarouselMovie({ movies, title }) {
           <Box position="relative" key={movie.id}>
             <Card
               sx={{
-                width: "83%",
+                width: "80%",
                 transition: "transform 0.3s ease-in-out",
                 "&:hover": {
                   transform: "scale(1.1)",
