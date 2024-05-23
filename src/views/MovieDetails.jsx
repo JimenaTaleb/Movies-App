@@ -1,5 +1,10 @@
-import React, { useEffect } from "react";
+//Importo useEffect
+import { useEffect } from "react";
+
+//Importo hooks de React Router
 import { useParams, useNavigate } from "react-router-dom";
+
+//Importo componentes de MUI
 import {
   Box,
   Card,
@@ -8,6 +13,8 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+
+//Importo hook
 import useMovies from "../hooks/useMovies";
 
 export default function MovieDetails() {
@@ -74,35 +81,53 @@ export default function MovieDetails() {
             />
             <CardContent
               sx={{
-                color: "white",
+                color: "#f1f1f1",
                 minWidth: "100px",
-                width: "400px", 
+                width: "400px",
                 textAlign: "left",
               }}
             >
-              <Typography variant="h4" component="div" gutterBottom sx={{fontSize: { xs: 15, sm:25, md: 32 }}}>
+              <Typography
+                variant="h4"
+                component="div"
+                gutterBottom
+                sx={{ fontSize: { xs: 15, sm: 25, md: 32 } }}
+              >
                 {movie.title}
               </Typography>
-              <Typography variant="body1" paragraph sx={{fontSize: { xs: 10, sm:16, md: 20 }}}>
+              <Typography
+                variant="body1"
+                paragraph
+                sx={{ fontSize: { xs: 10, sm: 16, md: 20 } }}
+              >
                 {movie.overview}
               </Typography>
-              <Typography variant="body2" sx={{fontSize: { xs: 10, sm:16, md: 20}}}>
+              <Typography
+                variant="body2"
+                sx={{ fontSize: { xs: 10, sm: 16, md: 20 } }}
+              >
                 Release Date: {movie.release_date}
               </Typography>
-              <Typography variant="body2" sx={{ marginBottom: "20px", fontSize: { xs: 10, sm:18, md: 20 } }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  marginBottom: "20px",
+                  fontSize: { xs: 10, sm: 18, md: 20 },
+                }}
+              >
                 Genres: {movie.genres.map((genre) => genre.name).join(", ")}
               </Typography>
               <Button
                 onClick={() => navigate(`/trailer/${id}`)}
                 sx={{
-                  color: "#fff",
+                  color: "#f1f1f1",
                   backgroundColor: "#231841",
                   border: "1px solid #9cdbd4",
                   "&:hover": {
                     boxShadow: "0px 4px 8px #9cdbd4",
                     backgroundColor: "#231841",
                   },
-                  fontSize: { xs: 10, sm:15, md: 18},
+                  fontSize: { xs: 10, sm: 15, md: 18 },
                 }}
               >
                 Ver Tráiler
