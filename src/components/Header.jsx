@@ -1,5 +1,6 @@
 //Importo componentes de MUI
-import { Typography, Button, ButtonGroup, Stack, Box } from "@mui/material/";
+import { Stack, Typography, Box, ButtonGroup, Button } from "@mui/material/";
+
 //Importo hook de React
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +30,7 @@ export default function Header() {
             sx={{
               fontFamily: "Sarabun",
               fontSize: { xs: 30, md: 40, lg: 50 },
-              color: "#fff",
+              color: "#f1f1f1",
               fontWeight: "bold",
               textShadow: "2px 2px 2px #9cdbd4",
             }}
@@ -54,11 +55,11 @@ export default function Header() {
           sx={{
             flexDirection: "row",
             "& .MuiButton-root": {
-              color: "#fff",
+              color: "#f1f1f1",
               borderColor: "#9cdbd4",
-              margin: { xs: "2px 0", sm: "0 5px" },
-              fontSize: { xs: "8px", sm: "14px" },
-              padding: { xs: "5px 10px", sm: "6px 16px" },
+              margin: { xs: "2 0", sm: "0 5" },
+              fontSize: { xs: 8, sm: 14 },
+              padding: { xs: "5 10", sm: "6 16" },
               "&:hover": {
                 borderColor: "#f1f1f1",
                 boxShadow: "0px 4px 8px #9cdbd4",
