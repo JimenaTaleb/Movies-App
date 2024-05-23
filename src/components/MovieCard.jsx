@@ -1,5 +1,13 @@
+//Importo hook de React
 import { useContext } from "react";
+
+//Importo hook de React Router
 import { useNavigate } from "react-router-dom";
+
+//Importo context
+import { MyListContext } from "../context/MyListContext";
+
+//Importo componentes de MUI
 import {
   Card,
   CardMedia,
@@ -8,12 +16,14 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
+
+//Importo iconos
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
-import { MyListContext } from "../context/MyListContext";
 
 export default function MovieCard({ id, title, posterPath }) {
   const navigate = useNavigate();
-  const { addToMyList, removeFromMyList, isInMyList } = useContext(MyListContext);
+  const { addToMyList, removeFromMyList, isInMyList } =
+    useContext(MyListContext);
 
   const handleToggleMyList = () => {
     if (isInMyList(id)) {
@@ -43,7 +53,7 @@ export default function MovieCard({ id, title, posterPath }) {
       <CardContent
         sx={{
           backgroundColor: "#231841",
-          color: "white",
+          color: "#f1f1f1",
           display: "flex",
           flexDirection: "column",
         }}
@@ -59,20 +69,18 @@ export default function MovieCard({ id, title, posterPath }) {
             color: "white",
             textAlign: "center",
             display: { xs: "none", sm: "block" },
-            fontSize: "17px",
+            fontSize: "17",
           }}
         >
           {title}
         </Typography>
         <Tooltip
-          title={
-            isInMyList(id) ? "Quitar de Mi Lista" : "Agregar a Mi Lista"
-          }
+          title={isInMyList(id) ? "Quitar de Mi Lista" : "Agregar a Mi Lista"}
         >
           <IconButton
             onClick={handleToggleMyList}
             sx={{
-              color: isInMyList(id) ? "#9cdbd4" : "white",
+              color: isInMyList(id) ? "#9cdbd4" : "#f1f1f1",
             }}
           >
             {isInMyList(id) ? <Favorite /> : <FavoriteBorder />}
