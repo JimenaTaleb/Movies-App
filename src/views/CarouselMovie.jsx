@@ -1,8 +1,13 @@
+//Importo Hooks
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+//Importo componente visto en la web https://react-slick.neostack.com/
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+//Importo componentes de MUI
 import {
   Box,
   Typography,
@@ -12,12 +17,16 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
+
+//Importo iconos de ReactIcons
 import {
   ArrowBackIos,
   ArrowForwardIos,
   Favorite,
   FavoriteBorder,
 } from "@mui/icons-material";
+
+//Importo context
 import { MyListContext } from "../context/MyListContext";
 
 export default function CarouselMovie({ movies, title }) {
@@ -38,7 +47,7 @@ export default function CarouselMovie({ movies, title }) {
           zIndex: 2,
         }}
       >
-        <ArrowForwardIos style={{ color: "#231841" }} />
+        <ArrowForwardIos sx={{ color: "#231841" }} />
       </IconButton>
     );
   };
@@ -55,7 +64,7 @@ export default function CarouselMovie({ movies, title }) {
           zIndex: 2,
         }}
       >
-        <ArrowBackIos style={{ color: "#fff" }} />
+        <ArrowBackIos sx={{ color: "#f1f1f1" }} />
       </IconButton>
     );
   };
@@ -79,8 +88,8 @@ export default function CarouselMovie({ movies, title }) {
           fontSize: { xs: 15, md: 25, lg: 35 },
           color: "#231841",
           fontWeight: "bold",
-          marginBottom: "20px",
-          marginLeft: "20px",
+          marginBottom: 20,
+          marginLeft: 20,
           textShadow: "2px 2px 2px #9cdbd4",
         }}
       >
@@ -110,7 +119,7 @@ export default function CarouselMovie({ movies, title }) {
               <CardContent
                 sx={{
                   backgroundColor: "#231841",
-                  color: "white",
+                  color: "#f1f1f1",
                   display: "flex",
                   flexDirection: "column",
                 }}
@@ -123,10 +132,10 @@ export default function CarouselMovie({ movies, title }) {
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    color: "white",
+                    color: "#f1f1f1",
                     textAlign: "center",
                     display: { xs: "none", sm: "block" },
-                    fontSize: "17px",
+                    fontSize: 17,
                   }}
                 >
                   {movie.title}
@@ -145,7 +154,7 @@ export default function CarouselMovie({ movies, title }) {
                         : addToMyList(movie)
                     }
                     sx={{
-                      color: isInMyList(movie.id) ? "#9cdbd4" : "white",
+                      color: isInMyList(movie.id) ? "#9cdbd4" : "#f1f1f1",
                     }}
                   >
                     {isInMyList(movie.id) ? <Favorite /> : <FavoriteBorder />}
