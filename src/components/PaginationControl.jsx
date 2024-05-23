@@ -8,6 +8,7 @@ export default function PaginationControl({ totalPages, page, handleChange }) {
         display: "flex",
         justifyContent: "center",
         mt: 5,
+        mb: 2,
       }}
     >
       <Pagination
