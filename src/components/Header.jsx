@@ -59,7 +59,7 @@ export default function Header() {
               borderColor: "#9cdbd4",
               margin: { xs: "2 0", sm: "0 5" },
               fontSize: { xs: 8, sm: 14 },
-              padding: { xs: "5 10", sm: "6 16" },
+              padding: { xs: "5px 10px", sm: "6px 16px" },
               "&:hover": {
                 borderColor: "#f1f1f1",
                 boxShadow: "0px 4px 8px #9cdbd4",
