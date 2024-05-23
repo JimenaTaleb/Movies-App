@@ -88,8 +88,8 @@ export default function CarouselMovie({ movies, title }) {
           fontSize: { xs: 15, md: 25, lg: 35 },
           color: "#231841",
           fontWeight: "bold",
-          marginBottom: 20,
-          marginLeft: 20,
+          marginBottom: "20px",
+          marginLeft: "20px",
           textShadow: "2px 2px 2px #9cdbd4",
         }}
       >
