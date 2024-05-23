@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from "react";
+//Importo hooks
+import { useEffect, useState } from "react";
+
+//Importo hooks de React Router
 import { useParams, useNavigate } from "react-router-dom";
+
+//Importo componentes de MUI
 import { Box, Typography, Modal, Button } from "@mui/material";
+
+//Importo custom hook
 import useMovies from "../hooks/useMovies";
 
 export default function MovieTrailer() {
@@ -51,7 +58,7 @@ export default function MovieTrailer() {
               top: -45,
               right: -40,
               zIndex: 1000,
-              color: "#fff",
+              color: "#f1f1f1",
               fontSize: "20px",
             }}
           >
