@@ -1,5 +1,5 @@
 //Importo componentes de MUI
-import { Typography } from '@mui/material';
+import { Typography } from "@mui/material";
 
 export default function TitleSection({ title }) {
   return (

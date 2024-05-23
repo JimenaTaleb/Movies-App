@@ -1,7 +1,10 @@
-import { createContext, useEffect, useState } from 'react';
+//Importo hooks de React
+import { createContext, useEffect, useState } from "react";
 
+//Exporto contexto
 export const MyListContext = createContext();
 
+//Exporto proveedor de contexto
 export default function MyListContextProvider({ children }) {
   const [myList, setMyList] = useState(() => {
     const savedList = localStorage.getItem('myList');
