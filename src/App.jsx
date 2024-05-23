@@ -1,15 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import MainSection from './views/MainSection';
-import Footer from './components/Footer';
-import RecentReleases from './views/RecentReleases';
-import Popular from './views/Popular';
-import MyList from './views/MyList';
-import Search from './views/Search';
-import MovieDetails from './views/MovieDetails';
-import MovieTrailer from './views/MovieTrailer';
-import NotFound from './components/NotFound';
-import MyListContextProvider from './context/MyListContext';
+//Importo componentes de React Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//Importo componentes
+import Header from "./components/Header";
+import MainSection from "./views/MainSection";
+import RecentReleases from "./views/RecentReleases";
+import Popular from "./views/Popular";
+import MyList from "./views/MyList";
+import Search from "./views/Search";
+import MovieDetails from "./views/MovieDetails";
+import MovieTrailer from "./views/MovieTrailer";
+import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
+
+//Importo proveedor context
+import MyListContextProvider from "./context/MyListContext";
 
 function App() {
   return (
@@ -33,19 +38,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-Estructura App
-Header
-MainSection (para que la estructura html quede header-main-footer) => CarouselNowPlaying (1) CarouselPopular CarouselTopRated (1 reutilizable) CarouselMyList? views
-Upcoming views
-Popular views
-Search views
-MyList views
-MovieDetail views
-MovieTrailer views
-NotFound components
-Footer components
-MovieCard components
-
-*/
