@@ -1,4 +1,5 @@
-import { Box, Pagination } from '@mui/material';
+//Importo componentes de MUI
+import { Box, Pagination } from "@mui/material";
 
 export default function PaginationControl({ totalPages, page, handleChange }) {
   return (
