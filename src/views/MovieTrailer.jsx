@@ -10,6 +10,9 @@ import { Box, Typography, Modal, Button } from "@mui/material";
 //Importo custom hook
 import useMovies from "../hooks/useMovies";
 
+//Importo componente
+import NotFound from "../components/NotFound";
+
 export default function MovieTrailer() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -27,7 +30,7 @@ export default function MovieTrailer() {
   };
 
   if (!trailerKey) {
-    return <Typography variant="h5">No trailer available</Typography>;
+    return <NotFound />;
   }
 
   return (

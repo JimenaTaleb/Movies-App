@@ -17,6 +17,9 @@ import {
 //Importo hook
 import useMovies from "../hooks/useMovies";
 
+//Importo componente
+import NotFound from "../components/NotFound";
+
 export default function MovieDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -27,7 +30,7 @@ export default function MovieDetails() {
   }, [id, getMovieDetails]);
 
   if (!movie) {
-    return <Typography variant="h5">Movie not found</Typography>;
+    return <NotFound/>;
   }
 
   return (
