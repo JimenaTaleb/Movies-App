@@ -7,6 +7,8 @@ export default function MyListContextProvider({ children }) {
     const savedList = localStorage.getItem('myList');
     return savedList ? JSON.parse(savedList) : [];
   });
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 20;
 
   useEffect(() => {
     if (myList !== null) {
@@ -26,11 +28,23 @@ export default function MyListContextProvider({ children }) {
     return myList.some((movie) => movie.id === movieId);
   };
 
+  const totalPages = Math.ceil(myList.length / itemsPerPage);
+
+  const changePage = (newPage) => {
+    setPage(newPage);
+  };
+
+  const paginatedList = myList.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+
   const data = {
     myList,
     addToMyList,
     removeFromMyList,
-    isInMyList
+    isInMyList,
+    totalPages,
+    page,
+    changePage,
+    paginatedList,
   };
 
   return (
@@ -39,5 +53,3 @@ export default function MyListContextProvider({ children }) {
     </MyListContext.Provider>
   );
 }
-
-

@@ -7,7 +7,7 @@ import { MdAlternateEmail } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#231841", padding: "10px 20px", marginTop: "50px"}}>
+    <footer style={{ backgroundColor: "#231841", padding: "10px 20px"}}>
       <Typography
         align="center"
         sx={{

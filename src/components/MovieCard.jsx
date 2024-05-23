@@ -1,65 +1,84 @@
-import { useContext } from 'react';
-import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { MyListContext } from '../context/MyListContext';
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { MyListContext } from "../context/MyListContext";
 
-export default function MovieCard({ title, overview, posterPath, id }) {
-
+export default function MovieCard({ id, title, posterPath }) {
   const navigate = useNavigate();
-  
-  const { myList, addToMyList, removeFromMyList } = useContext(MyListContext);
-
-  const isMovieInList = myList.some((movie) => movie.id === id);
+  const { addToMyList, removeFromMyList, isInMyList } = useContext(MyListContext);
 
   const handleToggleMyList = () => {
-    if (isMovieInList) {
+    if (isInMyList(id)) {
       removeFromMyList(id);
     } else {
-      addToMyList({ title, overview, posterPath, id });
+      addToMyList({ id, title, poster_path: posterPath });
     }
   };
 
   return (
     <Card
       sx={{
-        maxWidth: 345,
-        margin: '20px',
-        border: '1px solid #a3a2a2',
-        boxShadow: '1px 1px 12px 0px rgba(77,74,74,0.75)',
-        position: 'relative'
+        width: { xs: "80%", sm: "40%", md: "30%", lg: "15%" },
+        transition: "transform 0.3s ease-in-out",
+        "&:hover": {
+          transform: "scale(1.1)",
+        },
       }}
     >
-        <CardMedia
-          component="img"
-          height="300"
-          width="100"
-          image={`https://image.tmdb.org/t/p/w500${posterPath}`}
-          alt={title}
-          title={title}
-          onClick={() => navigate(`/movie/${id}`)}
-        />
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
+      <CardMedia
+        component="img"
+        image={`https://image.tmdb.org/t/p/w500${posterPath}`}
+        alt={title}
+        sx={{ width: "100%", height: "300px", cursor: "pointer" }}
+        onClick={() => navigate(`/movie/${id}`)}
+      />
+      <CardContent
+        sx={{
+          backgroundColor: "#231841",
+          color: "white",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{
+            fontFamily: "Sarabun",
+            flex: 1,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            color: "white",
+            textAlign: "center",
+            display: { xs: "none", sm: "block" },
+            fontSize: "17px",
+          }}
+        >
+          {title}
+        </Typography>
+        <Tooltip
+          title={
+            isInMyList(id) ? "Quitar de Mi Lista" : "Agregar a Mi Lista"
+          }
+        >
+          <IconButton
+            onClick={handleToggleMyList}
             sx={{
-              color: '#080854',
-              fontWeight: 'bold',
+              color: isInMyList(id) ? "#9cdbd4" : "white",
             }}
           >
-            {title}
-          </Typography>
-        </CardContent>
-      <IconButton
-        onClick={handleToggleMyList}
-        sx={{ position: 'absolute', top: 10, right: 10 }}
-      >
-        {isMovieInList ? <Favorite color="error" /> : <FavoriteBorder />}
-      </IconButton>
+            {isInMyList(id) ? <Favorite /> : <FavoriteBorder />}
+          </IconButton>
+        </Tooltip>
+      </CardContent>
     </Card>
   );
 }
-
-

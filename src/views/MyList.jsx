@@ -1,35 +1,29 @@
-import { useContext } from 'react';
-import { Box, Typography } from '@mui/material';
-import MovieCard from '../components/MovieCard';
-import { MyListContext } from '../context/MyListContext';
+/* Modifico las secciones "Lanzamientos recientes", "Peliculas populares" y "Mi Lista", para reutilizar 
+el código en 3 componentes: titulo, lista de peliculas y paginación */
+
+import { useContext } from "react";
+import TitleSection from "../components/TitleSection";
+import MoviesContainerSection from "../components/MoviesContainerSection";
+import PaginationControl from "../components/PaginationControl";
+import { MyListContext } from "../context/MyListContext";
 
 export default function MyList() {
-  const { myList } = useContext(MyListContext);
+  const { paginatedList, totalPages, page, changePage } =
+    useContext(MyListContext);
+
+  const handleChange = (event, value) => {
+    changePage(value);
+  };
 
   return (
-    <Box>
-      <Typography variant="h2">Mi Lista</Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          flexWrap: 'wrap',
-        }}
-      >
-        {myList.length > 0 ? (
-          myList.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              posterPath={movie.posterPath}
-            />
-          ))
-        ) : (
-          <Typography variant="h5">No hay películas en tu lista.</Typography>
-        )}
-      </Box>
-    </Box>
+    <section>
+      <TitleSection title="Mi Lista" />
+      <MoviesContainerSection movies={paginatedList} />
+      <PaginationControl
+        totalPages={totalPages}
+        page={page}
+        handleChange={handleChange}
+      />
+    </section>
   );
 }
-

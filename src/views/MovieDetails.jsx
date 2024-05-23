@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Box, Card, CardMedia, CardContent, Container, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Button,
+  Typography,
+} from "@mui/material";
 import useMovies from "../hooks/useMovies";
 
 export default function MovieDetails() {
@@ -17,39 +24,90 @@ export default function MovieDetails() {
   }
 
   return (
-    <Container>
-      <Card sx={{ display: "flex", marginTop: 2 }}>
+    <Box position="relative">
+      <Card>
         <CardMedia
-          component="img"
-          sx={{ width: "300px" }}
-          image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          component="div"
+          image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           alt={movie.title}
-        />
-        <Box sx={{ display: "flex", flexDirection: "column", padding: 2 }}>
-          <CardContent>
-            <Typography variant="h4" component="div" gutterBottom>
-              {movie.title}
-            </Typography>
-            <Typography variant="body1" paragraph>
-              {movie.overview}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
-              Release Date: {movie.release_date}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
-              Genres: {movie.genres.map((genre) => genre.name).join(", ")}
-            </Typography>
-          </CardContent>
-          <Button
-            onClick={() => navigate(`/trailer/${id}`)}
-            variant="contained"
-            color="primary"
-            sx={{ marginTop: "auto" }}
+          sx={{
+            width: "100%",
+            height: "100vh",
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+            backgroundSize: "cover",
+            backgroundPosition: "top",
+            "&:before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 2,
+            }}
           >
-            Ver Tráiler
-          </Button>
-        </Box>
+            <CardMedia
+              component="img"
+              image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+              sx={{
+                width: "500px",
+                maxHeight: "600px",
+                objectFit: "contain",
+              }}
+            />
+            <CardContent
+              sx={{
+                color: "white",
+                width: "400px", 
+                textAlign: "left",
+              }}
+            >
+              <Typography variant="h4" component="div" gutterBottom>
+                {movie.title}
+              </Typography>
+              <Typography variant="body1" paragraph>
+                {movie.overview}
+              </Typography>
+              <Typography variant="body2">
+                Release Date: {movie.release_date}
+              </Typography>
+              <Typography variant="body2" sx={{ marginBottom: "20px" }}>
+                Genres: {movie.genres.map((genre) => genre.name).join(", ")}
+              </Typography>
+              <Button
+                onClick={() => navigate(`/trailer/${id}`)}
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "#231841",
+                  border: "1px solid #9cdbd4",
+                  "&:hover": {
+                    boxShadow: "0px 4px 8px #9cdbd4",
+                    backgroundColor: "#231841",
+                  },
+                }}
+              >
+                Ver Tráiler
+              </Button>
+            </CardContent>
+          </Box>
+        </CardMedia>
       </Card>
-    </Container>
+    </Box>
   );
 }

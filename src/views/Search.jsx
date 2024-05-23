@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Box, TextField, Typography, Pagination } from "@mui/material";
-import MovieCard from "../components/MovieCard";
+import { useState, useEffect } from "react";
+import { Box, TextField } from "@mui/material";
+import TitleSection from "../components/TitleSection";
+import MoviesContainerSection from "../components/MoviesContainerSection";
+import PaginationControl from "../components/PaginationControl";
 import useMovies from "../hooks/useMovies";
 
 export default function Search() {
@@ -31,35 +33,11 @@ export default function Search() {
       />
       {movies.length > 0 && (
         <Box>
-          <Typography variant="h5">Resultados de Búsqueda</Typography>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              flexWrap: "wrap",
-            }}
-          >
-            {movies.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                posterPath={movie.poster_path}
-              />
-            ))}
-          </Box>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={handlePageChange}
-            variant="outlined"
-            shape="rounded"
-            sx={{ marginTop: "20px", display: "flex", justifyContent: "center" }}
-          />
+          <TitleSection title="Resultados de la búsqueda" />
+          <MoviesContainerSection movies={movies}/>
+          <PaginationControl totalPages={totalPages} page={page} handleChange={handlePageChange} />
         </Box>
       )}
     </Box>
   );
 }
-
-

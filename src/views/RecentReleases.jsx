@@ -1,9 +1,13 @@
-import { Box, Pagination, Typography } from "@mui/material";
+/* Modifico las secciones "Lanzamientos recientes", "Peliculas populares" y "Mi Lista", para reutilizar 
+el código en 3 componentes: titulo, lista de peliculas y paginacion */
+
 import { useEffect } from "react";
-import MovieCard from "../components/MovieCard";
+import TitleSection from "../components/TitleSection";
+import MoviesContainerSection from "../components/MoviesContainerSection";
+import PaginationControl from "../components/PaginationControl";
 import useMovies from "../hooks/useMovies";
 
-export default function Popular() {
+export default function RecentReleases() {
   const { movies, totalPages, getMovies, changePage, page } = useMovies();
 
   const handleChange = (event, value) => {
@@ -11,37 +15,18 @@ export default function Popular() {
   };
 
   useEffect(() => {
-    getMovies("now_playing", page); 
+    getMovies("now_playing", page);
   }, [page]);
 
   return (
     <section>
-      <Typography variant="h2">Lanzamientos recientes</Typography>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
-      >
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            posterPath={movie.poster_path}
-          />
-        ))}
-
-        <Pagination
-          count={totalPages}
-          page={page}
-          onChange={handleChange}
-          variant="outlined"
-          shape="rounded"
-        />
-      </Box>
+      <TitleSection title="Lanzamientos recientes" />
+      <MoviesContainerSection movies={movies} />
+      <PaginationControl
+        totalPages={totalPages}
+        page={page}
+        handleChange={handleChange}
+      />
     </section>
   );
 }
