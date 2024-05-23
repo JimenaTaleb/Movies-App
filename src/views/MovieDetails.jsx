@@ -66,6 +66,7 @@ export default function MovieDetails() {
               image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
               sx={{
+                minWidth: "200px",
                 width: "500px",
                 maxHeight: "600px",
                 objectFit: "contain",
@@ -74,20 +75,21 @@ export default function MovieDetails() {
             <CardContent
               sx={{
                 color: "white",
+                minWidth: "100px",
                 width: "400px", 
                 textAlign: "left",
               }}
             >
-              <Typography variant="h4" component="div" gutterBottom>
+              <Typography variant="h4" component="div" gutterBottom sx={{fontSize: { xs: 15, sm:25, md: 32 }}}>
                 {movie.title}
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" paragraph sx={{fontSize: { xs: 10, sm:16, md: 20 }}}>
                 {movie.overview}
               </Typography>
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{fontSize: { xs: 10, sm:16, md: 20}}}>
                 Release Date: {movie.release_date}
               </Typography>
-              <Typography variant="body2" sx={{ marginBottom: "20px" }}>
+              <Typography variant="body2" sx={{ marginBottom: "20px", fontSize: { xs: 10, sm:18, md: 20 } }}>
                 Genres: {movie.genres.map((genre) => genre.name).join(", ")}
               </Typography>
               <Button
@@ -100,6 +102,7 @@ export default function MovieDetails() {
                     boxShadow: "0px 4px 8px #9cdbd4",
                     backgroundColor: "#231841",
                   },
+                  fontSize: { xs: 10, sm:15, md: 18},
                 }}
               >
                 Ver Tráiler
