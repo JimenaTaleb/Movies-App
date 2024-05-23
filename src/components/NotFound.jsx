@@ -1,5 +1,10 @@
+//Importo imagen
 import notfound from "../assets/notfoundv3.jpg";
+
+//Importo hook de React Router
 import { useNavigate } from "react-router-dom";
+
+//Importo componentes de MUI
 import { Box, Typography, Button } from "@mui/material";
 
 export default function NotFound() {
@@ -27,21 +32,21 @@ export default function NotFound() {
       <Typography
         variant="h2"
         component="h2"
-        sx={{ fontSize: { xs: "1.5rem", sm: "2rem" }, mb: 1, fontFamily: "Sarabun", color: "#231841", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4",}}
+        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 1, fontFamily: "Sarabun", color: "#231841", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4",}}
       >
         Oh dear! Are you lost?
       </Typography>
       <Typography
         variant="h2"
         component="h2"
-        sx={{ fontSize: { xs: "1.5rem", sm: "2rem" }, mb: 1, fontFamily: "Sarabun", }}
+        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 1, fontFamily: "Sarabun", }}
       >
         Floo powders did not work properly?
       </Typography>
       <Typography
         variant="h3"
         component="h3"
-        sx={{ fontSize: { xs: "1.25rem", sm: "1.75rem" }, mb: 2, fontFamily: "Sarabun", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4", }}
+        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 2, fontFamily: "Sarabun", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4", }}
       >
         Go back to the homepage.
       </Typography>
@@ -51,9 +56,9 @@ export default function NotFound() {
           color: "#fff",
           backgroundColor: "#231841",
           border: "1px solid #9cdbd4",
-          margin: { xs: "2px 0", sm: "0 5px" },
-          fontSize: { xs: "8px", sm: "14px" },
-          padding: { xs: "5px 10px", sm: "6px 16px" },
+          margin: { xs: "2 0", sm: "0 5" },
+          fontSize: { xs: 8, sm: 14 },
+          padding: { xs: "5 10", sm: "6 16" },
           "&:hover": {
             boxShadow: "0px 4px 8px #9cdbd4",
             backgroundColor: "#231841",
