@@ -13,7 +13,7 @@ export default function Footer() {
         sx={{
           fontFamily: "Sarabun",
           fontSize: { xs: 15, md: 20, lg: 25 },
-          color: "#fff",
+          color: "#f1f1f1",
           fontWeight: "bold",
           textShadow: "1px 1px 1px #9cdbd4",
           mb: { xs: 2, md: 0 },
