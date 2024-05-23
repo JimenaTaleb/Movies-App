@@ -1,5 +1,8 @@
-import { Box, Typography } from '@mui/material';
-import MovieCard from '../components/MovieCard';
+//Importo componentes de MUI
+import { Box, Typography } from "@mui/material";
+
+//Importo componente MovieCard
+import MovieCard from "../components/MovieCard";
 
 export default function MoviesContainerSection({ movies }) {
   return (
@@ -22,7 +25,7 @@ export default function MoviesContainerSection({ movies }) {
           />
         ))
       ) : (
-        <Typography variant="h5">No hay películas disponibles.</Typography>
+        <Typography variant="h5">No hay películas disponibles</Typography>
       )}
     </Box>
   );
