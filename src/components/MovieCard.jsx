@@ -75,7 +75,7 @@ export default function MovieCard({ id, title, posterPath }) {
           {title}
         </Typography>
         <Tooltip
-          title={isInMyList(id) ? "Quitar de Mi Lista" : "Agregar a Mi Lista"}
+          title={isInMyList(id) ? "Remove from My List" : "Add to My List"}
         >
           <IconButton
             onClick={handleToggleMyList}

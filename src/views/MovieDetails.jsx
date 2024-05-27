@@ -122,8 +122,8 @@ export default function MovieDetails() {
                   <Tooltip
                     title={
                       isInMyList(movie.id)
-                        ? "Quitar de Mi Lista"
-                        : "Agregar a Mi Lista"
+                        ? "Remove from My List"
+                        : "Add to My List"
                     }
                   >
                     <IconButton
