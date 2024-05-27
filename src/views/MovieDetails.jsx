@@ -1,10 +1,10 @@
-//Importo useEffect y useState
-import { useEffect, useState } from "react";
+// Importo useEffect y useState
+import { useEffect, useState, useContext } from "react";
 
-//Importo hooks de React Router
+// Importo hooks de React Router
 import { useParams, useNavigate } from "react-router-dom";
 
-//Importo componentes de MUI
+// Importo componentes de MUI
 import {
   Box,
   Card,
@@ -12,19 +12,28 @@ import {
   CardContent,
   Button,
   Typography,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
 
-//Importo hook
+// Importo iconos de ReactIcons
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+
+// Importo hook
 import useMovies from "../hooks/useMovies";
 
-//Importo componentes
+// Importo componentes
 import Loader from "../components/Loader";
 import NotFound from "../components/NotFound";
+
+// Importo context
+import { MyListContext } from "../context/MyListContext";
 
 export default function MovieDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { movie, getMovieDetails, isLoading } = useMovies();
+  const { addToMyList, removeFromMyList, isInMyList } = useContext(MyListContext);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -95,14 +104,42 @@ export default function MovieDetails() {
                   textAlign: "left",
                 }}
               >
-                <Typography
-                  variant="h4"
-                  component="div"
-                  gutterBottom
-                  sx={{ fontSize: { xs: 15, sm: 25, md: 32 } }}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
                 >
-                  {movie.title}
-                </Typography>
+                  <Typography
+                    variant="h4"
+                    component="div"
+                    gutterBottom
+                    sx={{ fontSize: { xs: 15, sm: 25, md: 32 } }}
+                  >
+                    {movie.title}
+                  </Typography>
+                  <Tooltip
+                    title={
+                      isInMyList(movie.id)
+                        ? "Remove from My List"
+                        : "Add to My List"
+                    }
+                  >
+                    <IconButton
+                      onClick={() =>
+                        isInMyList(movie.id)
+                          ? removeFromMyList(movie.id)
+                          : addToMyList(movie)
+                      }
+                      sx={{
+                        color: isInMyList(movie.id) ? "#9cdbd4" : "#f1f1f1",
+                      }}
+                    >
+                      {isInMyList(movie.id) ? <Favorite /> : <FavoriteBorder />}
+                    </IconButton>
+                  </Tooltip>
+                </Box>
                 <Typography
                   variant="body1"
                   paragraph
