@@ -74,7 +74,7 @@ export default function CarouselMovie({ movies, title }) {
     infinite: false,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 6,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };

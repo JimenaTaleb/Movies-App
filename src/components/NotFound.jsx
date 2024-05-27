@@ -32,21 +32,34 @@ export default function NotFound() {
       <Typography
         variant="h2"
         component="h2"
-        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 1, fontFamily: "Sarabun", color: "#231841", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4",}}
+        sx={{
+          fontSize: { xs: 24, sm: 32 },
+          mb: 1,
+          fontFamily: "Sarabun",
+          color: "#231841",
+          fontWeight: "bold",
+          textShadow: "2px 2px 2px #9cdbd4",
+        }}
       >
         Oh dear! Are you lost?
       </Typography>
       <Typography
         variant="h2"
         component="h2"
-        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 1, fontFamily: "Sarabun", }}
+        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 1, fontFamily: "Sarabun" }}
       >
         Floo powders did not work properly?
       </Typography>
       <Typography
         variant="h3"
         component="h3"
-        sx={{ fontSize: { xs: 24, sm: 32 }, mb: 2, fontFamily: "Sarabun", fontWeight: "bold", textShadow: "2px 2px 2px #9cdbd4", }}
+        sx={{
+          fontSize: { xs: 24, sm: 32 },
+          mb: 2,
+          fontFamily: "Sarabun",
+          fontWeight: "bold",
+          textShadow: "2px 2px 2px #9cdbd4",
+        }}
       >
         Go back to the homepage.
       </Typography>

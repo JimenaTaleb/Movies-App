@@ -7,7 +7,7 @@ export const MyListContext = createContext();
 //Exporto proveedor de contexto
 export default function MyListContextProvider({ children }) {
   const [myList, setMyList] = useState(() => {
-    const savedList = localStorage.getItem('myList');
+    const savedList = localStorage.getItem("myList");
     return savedList ? JSON.parse(savedList) : [];
   });
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ export default function MyListContextProvider({ children }) {
 
   useEffect(() => {
     if (myList !== null) {
-      localStorage.setItem('myList', JSON.stringify(myList));
+      localStorage.setItem("myList", JSON.stringify(myList));
     }
   }, [myList]);
 
@@ -37,7 +37,10 @@ export default function MyListContextProvider({ children }) {
     setPage(newPage);
   };
 
-  const paginatedList = myList.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const paginatedList = myList.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   const data = {
     myList,
@@ -51,8 +54,6 @@ export default function MyListContextProvider({ children }) {
   };
 
   return (
-    <MyListContext.Provider value={data}>
-      {children}
-    </MyListContext.Provider>
+    <MyListContext.Provider value={data}>{children}</MyListContext.Provider>
   );
 }

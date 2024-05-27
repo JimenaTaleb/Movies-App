@@ -5,19 +5,21 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 //Importo componentes de MUI
-import { Box, Typography, Modal, Button } from "@mui/material";
+import { Box, Modal, Button } from "@mui/material";
 
 //Importo custom hook
 import useMovies from "../hooks/useMovies";
 
-//Importo componente
+//Importo componentes
+import Loader from "../components/Loader";
 import NotFound from "../components/NotFound";
 
 export default function MovieTrailer() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { trailerKey, getTrailer } = useMovies();
+  const { trailerKey, getTrailer, isLoading } = useMovies();
   const [open, setOpen] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     getTrailer(id);
@@ -35,53 +37,59 @@ export default function MovieTrailer() {
 
   return (
     <Box>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="trailer-modal"
-        aria-describedby="trailer-modal-description"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backdropFilter: "blur(60px)",
-        }}
-      >
-        <Box
+      {isLoading ? (
+        <Loader />
+      ) : hasError || !trailerKey ? (
+        <NotFound />
+      ) : (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="trailer-modal"
+          aria-describedby="trailer-modal-description"
           sx={{
-            position: "relative",
-            width: "90%",
-            height: "700px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backdropFilter: "blur(60px)",
           }}
         >
-          <Button
-            onClick={handleClose}
+          <Box
             sx={{
-              position: "absolute",
-              top: -45,
-              right: -40,
-              zIndex: 1000,
-              color: "#f1f1f1",
-              fontSize: "20px",
+              position: "relative",
+              width: "90%",
+              height: "700px",
             }}
           >
-            X
-          </Button>
+            <Button
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                top: -45,
+                right: -40,
+                zIndex: 1000,
+                color: "#f1f1f1",
+                fontSize: "20px",
+              }}
+            >
+              X
+            </Button>
 
-          <Box sx={{ width: "100%", height: "100%" }}>
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="Trailer"
-              style={{ border: "none" }}
-            />
+            <Box sx={{ width: "100%", height: "100%" }}>
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Trailer"
+                style={{ border: "none" }}
+              />
+            </Box>
           </Box>
-        </Box>
-      </Modal>
+        </Modal>
+      )}
     </Box>
   );
 }
