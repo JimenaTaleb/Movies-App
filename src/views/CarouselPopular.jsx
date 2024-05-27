@@ -28,7 +28,7 @@ export default function CarouselPopular() {
       ) : (
         <CarouselMovie
           movies={movies.slice(0, 20)}
-          title="Películas Populares"
+          title="Popular Movies"
         />
       )}
     </section>

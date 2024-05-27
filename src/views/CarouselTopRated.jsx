@@ -28,7 +28,7 @@ export default function CarouselPopular() {
       ) : (
         <CarouselMovie
           movies={movies.slice(0, 20)}
-          title="Películas Mejor Ranqueadas"
+          title="Top Rated Movies"
         />
       )}
     </section>

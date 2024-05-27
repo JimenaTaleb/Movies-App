@@ -28,7 +28,7 @@ export default function Search() {
     <Box minHeight="100vh" display="flex" flexDirection="column">
       <Box>
         <TextField
-          label="Buscar Película"
+          label="Search"
           variant="outlined"
           fullWidth
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -37,7 +37,6 @@ export default function Search() {
         />
         {movies.length > 0 && (
           <Box>
-            <TitleSection title="Resultados de la búsqueda" />
             <MoviesContainerSection movies={movies} />
             <PaginationControl
               totalPages={totalPages}
