@@ -25,7 +25,7 @@ export default function MoviesContainerSection({ movies }) {
           />
         ))
       ) : (
-        <Typography variant="h5">No hay películas disponibles</Typography>
+        <Typography variant="h5">No movies available</Typography>
       )}
     </Box>
   );
