@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//Importo componentes de React Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//Importo componentes
+import Header from "./components/Header";
+import MainSection from "./views/MainSection";
+import RecentReleases from "./views/RecentReleases";
+import Popular from "./views/Popular";
+import MyList from "./views/MyList";
+import Search from "./views/Search";
+import MovieDetails from "./views/MovieDetails";
+import MovieTrailer from "./views/MovieTrailer";
+import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
+
+//Importo proveedor context
+import MyListContextProvider from "./context/MyListContext";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <MyListContextProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainSection />} />
+          <Route path="/recent-releases" element={<RecentReleases />} />
+          <Route path="/popular" element={<Popular />} />
+          <Route path="/my-list" element={<MyList />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/trailer/:id" element={<MovieTrailer />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </MyListContextProvider>
+  );
 }
 
-export default App
+export default App;
