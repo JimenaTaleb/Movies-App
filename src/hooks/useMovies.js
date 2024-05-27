@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 
 //Api key y Api url
-const API_KEY = "5fbf63f58cb80df7053368c78b3f3399";
+const API_KEY = `${import.meta.env.VITE_API_KEY}`
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export default function useMovies() {
