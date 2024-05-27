@@ -35,7 +35,7 @@ export default function Popular() {
         <NotFound />
       ) : (
         <>
-          <TitleSection title="Peliculas Populares" />
+          <TitleSection title="Popular Movies" />
           <MoviesContainerSection movies={movies} />
           <PaginationControl
             totalPages={totalPages}

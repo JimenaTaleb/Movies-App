@@ -35,7 +35,7 @@ export default function RecentReleases() {
         <NotFound />
       ) : (
         <>
-          <TitleSection title="Lanzamientos recientes" />
+          <TitleSection title="Recent Releases" />
           <MoviesContainerSection movies={movies} />
           <PaginationControl
             totalPages={totalPages}

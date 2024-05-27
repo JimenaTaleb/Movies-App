@@ -110,7 +110,7 @@ export default function CarouselNowPlaying() {
                       mt: 1,
                     }}
                   >
-                    Ver mas
+                    MORE
                   </Button>
                 </CardContent>
               </Card>

@@ -20,7 +20,7 @@ export default function MyList() {
 
   return (
     <section>
-      <TitleSection title="Mi Lista" />
+      <TitleSection title="My List" />
       <MoviesContainerSection movies={paginatedList} />
       <PaginationControl
         totalPages={totalPages}

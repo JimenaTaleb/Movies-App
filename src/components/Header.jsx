@@ -69,11 +69,11 @@ export default function Header() {
         >
           <Button onClick={() => navigate("/")}>Home</Button>
           <Button onClick={() => navigate("/recent-releases")}>
-            Lanzamientos recientes
+          Recent Releases
           </Button>
-          <Button onClick={() => navigate("/popular")}>Populares</Button>
-          <Button onClick={() => navigate("/my-list")}>Mi lista</Button>
-          <Button onClick={() => navigate("/search")}>Buscar</Button>
+          <Button onClick={() => navigate("/popular")}>Popular Movies</Button>
+          <Button onClick={() => navigate("/my-list")}>My List</Button>
+          <Button onClick={() => navigate("/search")}>Search</Button>
         </ButtonGroup>
       </Stack>
     </header>

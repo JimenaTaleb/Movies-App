@@ -138,7 +138,7 @@ export default function MovieDetails() {
                     fontSize: { xs: 10, sm: 15, md: 18 },
                   }}
                 >
-                  Ver Tráiler
+                  Watch Trailer
                 </Button>
               </CardContent>
             </Box>
